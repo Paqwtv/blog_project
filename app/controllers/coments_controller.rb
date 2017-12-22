@@ -2,22 +2,11 @@ class ComentsController < ApplicationController
   before_action :authenticate_user!, except: %i[show]
   before_action :set_coment, only: [:show, :edit, :update, :destroy]
 
-  # GET /coments/1
-  # GET /coments/1.json
-  def show
-  end
-
-  # GET /coments/new
   def new
     @coment = Coment.new
+    @coment.author = current_user.name
   end
 
-  # GET /coments/1/edit
-  def edit
-  end
-
-  # POST /coments
-  # POST /coments.json
   def create
     @coment = Coment.new(coment_params)
 
@@ -32,8 +21,6 @@ class ComentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /coments/1
-  # PATCH/PUT /coments/1.json
   def update
     respond_to do |format|
       if @coment.update(coment_params)
@@ -46,8 +33,6 @@ class ComentsController < ApplicationController
     end
   end
 
-  # DELETE /coments/1
-  # DELETE /coments/1.json
   def destroy
     @coment.destroy
     respond_to do |format|

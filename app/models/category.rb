@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-  has_and_belongs_to_many :posts,
-                          :comments
+  has_and_belongs_to_many :posts
+  has_and_belongs_to_many :coments
 end

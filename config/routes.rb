@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  
-  resources :categories
-  resources :coments
-  resources :posts
-  devise_for :users
-  resources :users
-
   root to: 'posts#index'
+
+  devise_for :users
+
+  resources :users, only: %i[show update]
+
+  resources :posts do
+    resources :coments, except: %i[index edit]
+  end
+  resources :categories do
+    resources :coments, except: %i[index edit]
+  end
 end

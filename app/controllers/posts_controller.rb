@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @page = params[:page] ? params[:page] : 1
+    @posts = Post.paginate(page: @page, per_page: Post.page_limit)
   end
 
   # GET /posts/1
@@ -25,7 +26,10 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user_id: current_user.id))
+    # @post.user_id = current_user.id
+    @post.author = current_user.name
+    @post.save
 
     respond_to do |format|
       if @post.save
@@ -70,6 +74,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:author, :body, :name, :file)
+      params.require(:post).permit(:author, :content, :name, :file)
     end
 end

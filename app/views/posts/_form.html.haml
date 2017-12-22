@@ -7,16 +7,12 @@
           %li= message
 
   .field
-    = f.label :author
-    = f.text_field :author
-  .field
-    = f.label :body
-    = f.text_area :body
-  .field
     = f.label :name
     = f.text_field :name
   .field
-    = f.label :file
-    = f.text_field :file
+    = f.label :content
+    = f.text_area :content
+  .field
+    = f.file_field :file
   .actions
     = f.submit 'Save'
