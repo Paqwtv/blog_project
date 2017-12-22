@@ -1,0 +1,23 @@
+%h1 Listing coments
+
+%table
+  %thead
+    %tr
+      %th Author
+      %th Content
+      %th
+      %th
+      %th
+
+  %tbody
+    - @coments.each do |coment|
+      %tr
+        %td= coment.author
+        %td= coment.content
+        %td= link_to 'Show', coment
+        %td= link_to 'Edit', edit_coment_path(coment)
+        %td= link_to 'Destroy', coment, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Coment', new_coment_path

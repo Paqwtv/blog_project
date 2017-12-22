@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Author:
+  = @coment.author
+%p
+  %b Content:
+  = @coment.content
+
+= link_to 'Edit', edit_coment_path(@coment)
+\|
+= link_to 'Back', coments_path

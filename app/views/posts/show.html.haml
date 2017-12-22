@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Author:
+  = @post.author
+%p
+  %b Body:
+  = @post.body
+%p
+  %b Name:
+  = @post.name
+%p
+  %b File:
+  = @post.file
+
+= link_to 'Edit', edit_post_path(@post)
+\|
+= link_to 'Back', posts_path
