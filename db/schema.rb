@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20171221141410) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", unique: true
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20171221141410) do
     t.bigint "user_id"
     t.string "author"
     t.text "content"
-    t.string "name"
+    t.string "name", unique: true
     t.string "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20171221141410) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "name", unique: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false

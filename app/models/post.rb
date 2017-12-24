@@ -6,11 +6,17 @@ class Post < ApplicationRecord
   has_and_belongs_to_many :coments
 
   mount_uploader :file, FileUploader
-  validate :file_size
 
-  def file_size
+  validates :name,
+            presence: true,
+            uniqueness: true,
+            pool: true
+
+  validate :file_size_valid?
+
+  def file_size_valid?
     errors.add(:file, 'Размер файла должен быть не более 2 Mb') if
-    file.file.size.to_f > 2000000.bytes
+    file.present? && file.file.size.to_f > 2000000.bytes
   end
 
   def self.page_limit

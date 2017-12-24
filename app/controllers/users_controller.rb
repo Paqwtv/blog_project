@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: %i[show]
-  before_action :set_user, only: [:show, :update]
-  
+  before_action :set_user, only: [:show, :update, :edit]
+
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -22,6 +22,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name)
+      params.require(:user).permit(:name, :email)
     end
 end

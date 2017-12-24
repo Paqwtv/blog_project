@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.belongs_to :user, index: true
       t.string :author
       t.text :content
-      t.string :name
+      t.string :name, unique: true
       t.string :file
 
       t.timestamps

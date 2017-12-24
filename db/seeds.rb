@@ -20,7 +20,7 @@ Category.create([
 
 user = User.create(
 { 
-  name: 'Ruby DEV',
+  name: 'Ruby DEV.',
   email: 'ruby@gmail.com',
   password: 'password',
   password_confirmation: 'password'
@@ -30,15 +30,17 @@ Post.create([
 { 
   user_id: user.id,
   author: user.name,
-  name: 'First POST',
+  name: 'First POST.',
   content: 'With the file db/seeds.rb, the Rails gods have given us a way 
-  of feeding default values easily and quickly to a fresh installation.'
+  of feeding default values easily and quickly to a fresh installation.',
+  file: ''
 },
 {
   user_id: user.id,
   author: user.name,
-  name: 'Secound POST',
+  name: 'Secound POST.',
   content: 'I use the file db/seeds.rb at this point because it offers a
-  simple mechanism for filling an empty database with default values. '
+  simple mechanism for filling an empty database with default values. ',
+  file: ''
 }
 ])

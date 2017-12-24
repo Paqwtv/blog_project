@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: %i[show update]
+  resources :users, only: %i[show update edit]
 
   resources :posts do
     resources :coments, except: %i[index edit]
